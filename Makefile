@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
+#    By: adam <adam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/02 01:04:40 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/02 15:31:34 by adam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
-SRCS			=	main.c
+SRCS_DIR		=	srcs/
+SRCS			=	$(SRCS_DIR)main.c
 
 OBJS			= 	${SRCS:.c=.o}
 
