@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 16:44:53 by adben-mc          #+#    #+#              #
-#    Updated: 2022/01/25 04:33:10 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/03 14:38:33 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CFLAGS	=	-Wall -Werror -Wextra
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS}
-			@$(MAKE) -sC libft all
+			@$(MAKE) -sC libft bonus
 			ar -rcs $(NAME) $(OBJS) libft/*.o
 
 all:		${NAME}
