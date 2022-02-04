@@ -6,11 +6,31 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/03 18:00:56 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:30:35 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+int ft_dupnb(char	**argv)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (argv[j])
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+				return (ft_printf("Invalid arguments : Duplicate numbers\n"));
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	ft_have_nb(char *str)
 {
@@ -39,7 +59,7 @@ int	ft_validarg(int argc, char **argv)
 		return (0);
 	}
 	i = 1;
-	while (i < argc)
+	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
@@ -99,19 +119,55 @@ char	**ft_preparestack(t_data	*data)
 	return (split);
 }
 
+t_stack	*ft_create_stack(char **split, int count)
+{
+	int		i;
+	t_stack	*new;
+	t_stack	*first;
+
+	i = 0;
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		exit(1);
+	first = new;
+	while (++i < count)
+	{
+		if (i < count - 1)
+		{
+			new->next = (t_stack *)malloc(sizeof(t_stack));
+			if (!new->next)
+				exit(1);
+		}
+		new->number = ft_atoi(split[i]);
+		if (i == (count - 1))
+			new->next = NULL;
+		else
+			new = new->next;
+	}
+	return (first);
+}
+
 int	ft_initstack(t_data	*data)
 {
 	char	**split;
-	size_t	i;
+	int	i;
 
 	split = ft_preparestack(data);
 	if (!split)
 		return (0);
-	if (!ft_validarg(data->argc, split))
+	if (!ft_validarg(data->argc, split) || ft_dupnb(split))
 		return (0);
 	data->nb_number = 0;
+	data->nb_ina = 0;
+	data->nb_inb = 0;
 	while (split[data->nb_number])
 		data->nb_number++;
+	data->stacka = ft_create_stack(split, data->nb_number);
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
+	data->stackb = NULL;
 	return (1);
 }
 
@@ -126,12 +182,17 @@ int	ft_parsing(t_data *data, char **argv, int argc)
 	return (1);
 }
 
-// void	ft_printstacks(t_data	*data)
-// {
-// 	size_t	i;
+void	ft_printstacks(t_stack	*stack)
+{
+	t_stack *cur;
 
-	
-// }
+	cur = stack;
+	while (cur)
+	{
+		ft_printf("%d\n", cur->number);
+		cur = cur->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -140,5 +201,6 @@ int	main(int argc, char **argv)
 	if (!ft_parsing(&data, argv, argc))
 		return (1);
 	ft_printf("Parsing done ;)\n");
-	ft_printstacks(&data);
+	ft_printf("Nombre d'arguments : %d\n", data.nb_number);
+	ft_printstacks(data.stacka);
 }
