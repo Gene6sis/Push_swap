@@ -6,12 +6,16 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/04 20:41:23 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/06 06:41:45 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_DIR		=	srcs/
-SRCS			=	$(SRCS_DIR)main.c
+SRCS			=	$(SRCS_DIR)main.c			\
+					$(SRCS_DIR)push.c			\
+					$(SRCS_DIR)swap.c			\
+					$(SRCS_DIR)reverse_rotate.c	\
+					$(SRCS_DIR)rotate.c
 
 OBJS			= 	${SRCS:.c=.o}
 

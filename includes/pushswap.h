@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 05:03:57 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 06:47:45 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,33 @@ typedef struct s_data {
 	int				nb_ina;
 	int				nb_inb;
 }				t_data;
+
+
+
+/*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
+
+int		ft_dupnb(char	**argv);
+int		ft_have_nb(char *str);
+int		ft_validarg(int argc, char **argv);
+char	*ft_strjoinbis(char *s1, char *s2);
+char	**ft_preparestack(t_data	*data);
+t_stack	*ft_create_stack(char **split, int count);
+int		ft_initstack(t_data	*data);
+int		ft_parsing(t_data *data, char **argv, int argc);
+
+/*	||||||||||||||| 	MOVES	 |||||||||||||||	*/
+
+void	pa(t_stack **stackb, t_stack **stacka);
+void	pb(t_stack **stackb, t_stack **stacka);
+void	rra(t_stack **stack);
+void	rrb(t_stack **stack);
+void	rrr(t_stack **stack);
+void	ra(t_stack **stack);
+void	rb(t_stack **stack);
+void	rr(t_stack **stacka, t_stack **stackb);
+void	ss(t_stack **stacka, t_stack **stackb);
+void	sa(t_stack **stack);
+void	sb(t_stack **stack);
+
 
 #endif

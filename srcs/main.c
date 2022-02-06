@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/04 21:44:54 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 06:57:41 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,8 +202,23 @@ int	main(int argc, char **argv)
 
 	if (!ft_parsing(&data, argv, argc))
 		return (1);
-	ft_printf("Parsing done ;)\n");
-	ft_printf("Nombre d'arguments : %d\n", data.nb_number);
+	// //ft_printf("Parsing done ;)\n");
+	// //ft_printf("Nombre d'arguments : %d\n", data.nb_number);
+	// pb(&data.stackb, &data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// pa(&data.stackb, &data.stacka);
+	// ra(&data.stacka);
+	// rr(&data.stacka, &data.stackb);
+	// ra(&data.stacka);
+	// sa(&data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// pb(&data.stackb, &data.stacka);
+	// //pb(&data.stackb, &data.stacka);
+	ft_printf("Stack A : \n");
 	ft_printstacks(data.stacka);
+	ft_printf("\n\nStack B : \n");
 	ft_printstacks(data.stackb);
 }
