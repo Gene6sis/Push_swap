@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:43:27 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:45:35 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:49:30 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rra(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
-	ft_printf("rra\n");
+	// ft_printf("rra\n");
 	if (!*stack)
 	{
 		ft_printf("rra on NULL\n");
@@ -54,7 +54,7 @@ void	rrb(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
-	ft_printf("rrb\n");
+	// ft_printf("rrb\n");
 	if (!*stack)
 	{
 		ft_printf("rra on NULL\n");
@@ -72,7 +72,7 @@ void	rrb(t_stack **stack)
 
 void	rrr(t_stack **stacka, t_stack **stackb)
 {
-	ft_printf("rrr\n");
+	// ft_printf("rrr\n");
 	rra(stacka);
 	rrb(stackb);
 }

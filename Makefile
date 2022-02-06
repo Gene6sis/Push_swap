@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/06 22:51:06 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/07 00:08:04 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS			=	$(SRCS_DIR)main.c			\
 					$(SRCS_DIR)reverse_rotate.c	\
 					$(SRCS_DIR)rotate.c			\
 					$(SRCS_DIR)median.c			\
-					$(SRCS_DIR)sort.c
+					$(SRCS_DIR)sort.c			\
+					$(SRCS_DIR)sortfirst.c		\
+					$(SRCS_DIR)sortsecond.c
 
 OBJS			= 	${SRCS:.c=.o}
 

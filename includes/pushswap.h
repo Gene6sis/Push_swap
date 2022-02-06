@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:45:29 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:07:46 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ typedef struct s_data {
 	int				max_nb;
 }				t_data;
 
+/*	|||||||||||||| 	 ERROR || FREE	 |||||||||||	*/
+
+
+
 /*	||||||||||||||| 	UTILS	 |||||||||||||||	*/
 
 void	ft_printstacks(t_stack	*stack);
+t_stack	*ft_lstlastbis(t_stack *lst);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
 
@@ -67,5 +72,7 @@ void	sb(t_stack **stack);
 
 void	ft_median(t_data *data);
 void	ft_sort(t_data *data);
+void	ft_sortfirst(t_data *data);
+void	ft_sortsecond(t_data *data);
 
 #endif

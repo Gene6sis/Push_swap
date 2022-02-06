@@ -6,13 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:42:46 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:10:47 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:50:49 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-static t_stack	*ft_lstlastbis(t_stack *lst)
+t_stack	*ft_lstlastbis(t_stack *lst)
 {
 	while (lst)
 	{
@@ -29,7 +29,7 @@ void	ra(t_stack **stack)
 	t_stack *last;
 	t_stack *first;
 
-	ft_printf("ra\n");
+	// ft_printf("ra\n");
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	if (!first || !last)
@@ -47,7 +47,7 @@ void	rb(t_stack **stack)
 	t_stack *last;
 	t_stack *first;
 
-	ft_printf("rb\n");
+	// ft_printf("rb\n");
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	if (!first || !last)
@@ -62,7 +62,7 @@ void	rb(t_stack **stack)
 
 void	rr(t_stack **stacka, t_stack **stackb)
 {
-	ft_printf("rr\n");
+	// ft_printf("rr\n");
 	ra(stacka);
 	rb(stackb);
 }
