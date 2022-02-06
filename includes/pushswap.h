@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 06:47:45 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:01:57 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ typedef struct s_data {
 	int				nb_number;
 	int				nb_ina;
 	int				nb_inb;
+	int				median;
+	int				max_nb;
 }				t_data;
 
+/*	||||||||||||||| 	UTILS	 |||||||||||||||	*/
 
+void	ft_printstacks(t_stack	*stack);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
 
@@ -59,5 +63,9 @@ void	ss(t_stack **stacka, t_stack **stackb);
 void	sa(t_stack **stack);
 void	sb(t_stack **stack);
 
+/*	||||||||||||||| 	SORT	 |||||||||||||||	*/
+
+void	ft_median(t_data *data);
+void	ft_sort(t_data *data);
 
 #endif

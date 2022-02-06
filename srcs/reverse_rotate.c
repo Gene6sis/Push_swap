@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:43:27 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 06:43:02 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:10:31 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	rra(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
+	ft_printf("rra\n");
 	if (!*stack)
 	{
 		ft_printf("rra on NULL\n");
@@ -53,6 +54,7 @@ void	rrb(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
+	ft_printf("rrb\n");
 	if (!*stack)
 	{
 		ft_printf("rra on NULL\n");
@@ -68,8 +70,9 @@ void	rrb(t_stack **stack)
 	*stack = last;
 }
 
-void	rrr(t_stack **stack)
+void	rrr(t_stack **stack) //soucis
 {
+	ft_printf("rrr\n");
 	rra(stack);
 	rrb(stack);
 }

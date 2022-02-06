@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 06:57:41 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:11:57 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ t_stack	*ft_create_stack(char **split, int count)
 int	ft_initstack(t_data	*data)
 {
 	char	**split;
-	int	i;
+	int		i;
 
 	split = ft_preparestack(data);
 	if (!split)
@@ -165,6 +165,8 @@ int	ft_initstack(t_data	*data)
 	while (split[data->nb_number])
 		data->nb_number++;
 	data->stacka = ft_create_stack(split, data->nb_number);
+	data->argv = split;
+	ft_median(data);
 	i = -1;
 	while (split[++i])
 		free(split[i]);
@@ -202,8 +204,8 @@ int	main(int argc, char **argv)
 
 	if (!ft_parsing(&data, argv, argc))
 		return (1);
-	// //ft_printf("Parsing done ;)\n");
-	// //ft_printf("Nombre d'arguments : %d\n", data.nb_number);
+	// ft_printf("Parsing done ;)\n");
+	// ft_printf("Nombre d'arguments : %d\n", data.nb_number);
 	// pb(&data.stackb, &data.stacka);
 	// pb(&data.stackb, &data.stacka);
 	// pa(&data.stackb, &data.stacka);
@@ -216,9 +218,12 @@ int	main(int argc, char **argv)
 	// pb(&data.stackb, &data.stacka);
 	// pb(&data.stackb, &data.stacka);
 	// pb(&data.stackb, &data.stacka);
-	// //pb(&data.stackb, &data.stacka);
-	ft_printf("Stack A : \n");
-	ft_printstacks(data.stacka);
-	ft_printf("\n\nStack B : \n");
-	ft_printstacks(data.stackb);
+	// pb(&data.stackb, &data.stacka);
+	ft_sort(&data);
+	// ft_printf("==========================\nStack A : \n");
+	// ft_printstacks(data.stacka);
+	// ft_printf("\n\nStack B : \n");
+	// ft_printstacks(data.stackb);
+	// ft_printf("Median : %d\n", data.median);
+	// ft_printf("Max : %d\n", data.max_nb);
 }
