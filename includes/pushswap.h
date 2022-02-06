@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:01:57 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:45:29 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	pa(t_stack **stackb, t_stack **stacka);
 void	pb(t_stack **stackb, t_stack **stacka);
 void	rra(t_stack **stack);
 void	rrb(t_stack **stack);
-void	rrr(t_stack **stack);
+void	rrr(t_stack **stacka, t_stack **stackb);
 void	ra(t_stack **stack);
 void	rb(t_stack **stack);
 void	rr(t_stack **stacka, t_stack **stackb);

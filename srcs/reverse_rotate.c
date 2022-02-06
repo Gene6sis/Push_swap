@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:43:27 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:10:31 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:45:35 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	rrb(t_stack **stack)
 	*stack = last;
 }
 
-void	rrr(t_stack **stack) //soucis
+void	rrr(t_stack **stacka, t_stack **stackb)
 {
 	ft_printf("rrr\n");
-	rra(stack);
-	rrb(stack);
+	rra(stacka);
+	rrb(stackb);
 }
