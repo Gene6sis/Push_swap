@@ -6,11 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/04 12:30:35 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/04 21:44:54 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+void	ft_printstacks(t_stack	*stack);
 
 int ft_dupnb(char	**argv)
 {
@@ -125,7 +127,7 @@ t_stack	*ft_create_stack(char **split, int count)
 	t_stack	*new;
 	t_stack	*first;
 
-	i = 0;
+	i = -1;
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		exit(1);
@@ -203,4 +205,5 @@ int	main(int argc, char **argv)
 	ft_printf("Parsing done ;)\n");
 	ft_printf("Nombre d'arguments : %d\n", data.nb_number);
 	ft_printstacks(data.stacka);
+	ft_printstacks(data.stackb);
 }
