@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:41:43 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:49:31 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 03:07:16 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pa(t_stack **stackb, t_stack **stacka)
 {
 	t_stack	*cur;
 
-	// ft_printf("pa\n");
+	ft_printf("pa\n");
 	cur = *stackb;
 	if (!*stackb)
 	{
@@ -32,7 +32,7 @@ void	pb(t_stack **stackb, t_stack **stacka)
 {
 	t_stack	*cur;
 
-	// ft_printf("pb\n");
+	ft_printf("pb\n");
 	cur = *stacka;
 	if (!*stacka)
 	{

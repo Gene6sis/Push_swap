@@ -6,13 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:43:27 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/06 23:49:30 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 03:07:09 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-static int	ft_lstsizebis(t_stack *lst)
+int	ft_lstsizebis(t_stack *lst)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ void	rra(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
-	// ft_printf("rra\n");
+	ft_printf("rra\n");
 	if (!*stack)
 	{
 		ft_printf("rra on NULL\n");
@@ -40,7 +40,7 @@ void	rra(t_stack **stack)
 	}
 	cur = *stack;
 	i = -1;
-	while (++i < ft_lstsizebis(*stack) - 1)
+	while (++i < ft_lstsizebis(*stack) - 2)
 		cur = cur->next;
 	last = cur->next;
 	cur->next = NULL;
@@ -54,15 +54,15 @@ void	rrb(t_stack **stack)
 	t_stack	*cur;
 	int		i;
 
-	// ft_printf("rrb\n");
+	ft_printf("rrb\n");
 	if (!*stack)
 	{
-		ft_printf("rra on NULL\n");
+		ft_printf("rrb on NULL\n");
 		return ;
 	}
 	cur = *stack;
 	i = -1;
-	while (++i < ft_lstsizebis(*stack) - 1)
+	while (++i < ft_lstsizebis(*stack) - 2)
 		cur = cur->next;
 	last = cur->next;
 	cur->next = NULL;

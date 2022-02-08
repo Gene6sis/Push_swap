@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:07:09 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/07 00:09:59 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 03:03:30 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,4 @@ void ft_sortfirst(t_data *data)
 		pb(&(data->stackb), &(data->stacka));
 		ft_checkmedian(data);
 	}
-	ft_printf("==========================\nStack A : \n");
-	ft_printstacks(data->stacka);
-	ft_printf("\nStack B : \n\n");
-	ft_printstacks(data->stackb);
 }

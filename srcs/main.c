@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/07 00:00:21 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 03:07:33 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,6 @@ int	ft_initstack(t_data	*data)
 	if (!ft_validarg(data->argc, split) || ft_dupnb(split))
 		return (0);
 	data->nb_number = 0;
-	data->nb_ina = 0;
-	data->nb_inb = 0;
 	while (split[data->nb_number])
 		data->nb_number++;
 	data->stacka = ft_create_stack(split, data->nb_number);
@@ -205,26 +203,11 @@ int	main(int argc, char **argv)
 
 	if (!ft_parsing(&data, argv, argc))
 		return (1);
-	// ft_printf("Parsing done ;)\n");
-	ft_printf("Nombre d'arguments : %d\n", data.nb_number);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pa(&data.stackb, &data.stacka);
-	// ra(&data.stacka);
-	// rr(&data.stacka, &data.stackb);
-	// ra(&data.stacka);
-	// sa(&data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
-	// pb(&data.stackb, &data.stacka);
 	ft_sort(&data);
-	ft_printf("==========================\nStack A : \n");
-	ft_printstacks(data.stacka);
-	ft_printf("\n\nStack B : \n");
-	ft_printstacks(data.stackb);
-	ft_printf("=========\n\nMedian : %d\n", data.median);
-	ft_printf("Max : %d\n", data.max_nb);
+	// ft_printf("==========================\nStack A : \n");
+	// ft_printstacks(data.stacka);
+	// ft_printf("\n\nStack B : \n");
+	// ft_printstacks(data.stackb);
+	// ft_printf("=========\n\nMedian : %d\n", data.median);
+	// ft_printf("Max : %d\n", data.max_nb);
 }

@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/07 00:07:46 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:17:25 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_data {
 	t_stack			*stacka;
 	t_stack			*stackb;
 	int				nb_number;
-	int				nb_ina;
-	int				nb_inb;
 	int				median;
 	int				max_nb;
 }				t_data;
@@ -42,6 +40,7 @@ typedef struct s_data {
 
 void	ft_printstacks(t_stack	*stack);
 t_stack	*ft_lstlastbis(t_stack *lst);
+int		ft_lstsizebis(t_stack *lst);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
 
@@ -74,5 +73,6 @@ void	ft_median(t_data *data);
 void	ft_sort(t_data *data);
 void	ft_sortfirst(t_data *data);
 void	ft_sortsecond(t_data *data);
+int		ft_scrolldown_worth(t_stack	*stack, int nb);
 
 #endif
