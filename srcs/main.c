@@ -6,13 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 04:56:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:16:49 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int ft_dupnb(char	**argv)
+int ft_dupnb(char **argv)
 {
 	size_t	i;
 	size_t	j;
@@ -76,8 +76,6 @@ int	ft_validarg(int argc, char **argv)
 	return (1);
 }
 
-//a.out ""  b c
-//00000 "" 	1 2		3
 char	*ft_strjoinbis(char *s1, char *s2)
 {
 	char	*str;
@@ -99,7 +97,7 @@ char	*ft_strjoinbis(char *s1, char *s2)
 	return (str);
 }
 
-char	**ft_preparestack(t_data	*data)
+char	**ft_preparestack(t_data *data)
 {
 	char	*str;
 	int		i;
@@ -237,10 +235,4 @@ int	main(int argc, char **argv)
 	if (!ft_issort(data.stacka))
 		ft_sort(&data);
 	ft_free(&data);
-	// ft_printf("==========================\nStack A : \n");
-	// ft_printstacks(data.stacka);
-	// ft_printf("\n\nStack B : \n");
-	// ft_printstacks(data.stackb);
-	// ft_printf("=========\n\nMedian : %d\n", data.median);
-	// ft_printf("Max : %d\n", data.max_nb);
 }

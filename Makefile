@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/08 03:36:02 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/08 22:42:14 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ EXEC			= 	push_swap
 
 CC				=	gcc
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 PRINTF_DIR		=	ft_printf
 PRINTF_LIB 		=	$(PRINTF_DIR)/libftprintf.a
