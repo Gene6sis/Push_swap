@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:07:09 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 03:03:30 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/08 04:45:41 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_checkmedian(t_data *data)
 {
-	if (data->stackb->number < data->median)
+	if (data->stackb->number < data->median && ft_lstsizebis(data->stackb) > 1)
 		rb(&(data->stackb));
 }
 
