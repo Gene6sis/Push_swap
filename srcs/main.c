@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 21:16:49 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:01:04 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,9 @@ int	ft_initstack(t_data	*data)
 	while (split[data->nb_number])
 		data->nb_number++;
 	data->stacka = ft_create_stack(split, data->nb_number);
+	data->move = (t_move *)malloc(sizeof(t_move));
+	if (!data->move)
+		exit(1);
 	data->argv = split;
 	ft_median(data);
 	i = -1;
@@ -199,6 +202,8 @@ void	ft_free(t_data *data)
 {
 	t_stack	*cur;
 	t_stack	*next;
+	t_move	*current;
+	t_move	*nextent;
 
 	cur = data->stacka;		
 	while (cur)
@@ -208,6 +213,14 @@ void	ft_free(t_data *data)
 		cur = next;		
 	}
 	free(cur);
+	current = data->move;		
+	while (current)
+	{
+		nextent = current->next;
+		free(current);
+		current = nextent;		
+	}
+	free(current);
 }
 
 int ft_issort(t_stack *stack)
@@ -226,6 +239,24 @@ int ft_issort(t_stack *stack)
 	return (1);
 }
 
+
+void	ft_addmove(t_move *move, char *action)
+{
+	
+}
+
+void	ft_printres(t_move	*stack)
+{
+	t_move	*cur;
+	
+	cur = stack;
+	while (cur)
+	{
+		ft_printf("%s\n", cur->action);
+		cur = cur->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -234,5 +265,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!ft_issort(data.stacka))
 		ft_sort(&data);
+	ft_printres(data.move);
 	ft_free(&data);
 }

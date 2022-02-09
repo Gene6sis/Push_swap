@@ -6,17 +6,17 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:41:43 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 03:07:16 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:58:36 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	pa(t_stack **stackb, t_stack **stacka)
+void	pa(t_stack **stackb, t_stack **stacka, t_data *data)
 {
 	t_stack	*cur;
 
-	ft_printf("pa\n");
+	ft_addmove(&(data->move), "pa");
 	cur = *stackb;
 	if (!*stackb)
 	{
@@ -28,11 +28,11 @@ void	pa(t_stack **stackb, t_stack **stacka)
 	*stacka = cur;
 }
 
-void	pb(t_stack **stackb, t_stack **stacka)
+void	pb(t_stack **stackb, t_stack **stacka, t_data *data)
 {
 	t_stack	*cur;
 
-	ft_printf("pb\n");
+	ft_addmove(&(data->move), "pb");
 	cur = *stacka;
 	if (!*stacka)
 	{

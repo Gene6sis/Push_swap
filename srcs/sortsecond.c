@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:10:18 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 03:04:55 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:51:23 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,15 @@ static void	ft_movecheapest(t_data	*data, int a, int b)
 	while (data->stackb->number != b || data->stacka->number != a)
 	{
 		if (data->stacka->number != a && ft_scrolldown_worth(data->stacka, a))
-			rra(&(data->stacka));
+			rra(&(data->stacka), data);
 		if (data->stackb->number != b && ft_scrolldown_worth(data->stackb, b))
-			rrb(&(data->stackb));
+			rrb(&(data->stackb), data);
 		if (data->stacka->number != a && !ft_scrolldown_worth(data->stacka, a))
-			ra(&(data->stacka));
+			ra(&(data->stacka), data);
 		if (data->stackb->number != b && !ft_scrolldown_worth(data->stackb, b))
-			rb(&(data->stackb));
+			rb(&(data->stackb), data);
 	}
-	pa(&(data->stackb), &(data->stacka));
+	pa(&(data->stackb), &(data->stacka), data);
 }
 
 void ft_sortsecond(t_data *data)
@@ -100,7 +100,7 @@ void ft_sortsecond(t_data *data)
 	int		a;
 	int		b;
 	int		nb_move;
-	
+
 	cur = data->stackb;
 	nb_move = (ft_movetopnb(data->stacka, ft_linkminmaja(data, cur->number)) +
 			ft_movetopnb(data->stackb, cur->number));

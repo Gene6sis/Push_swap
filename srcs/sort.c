@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 22:48:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 22:43:54 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:49:27 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,23 @@ void	ft_sortthree(t_data	*data)
 	
 
 	if (data->nb_number == 2)
-		return (ra(&(data->stacka)));
+		return (ra(&(data->stacka), data));
 	if (zero > first &&	first > second && zero > second)
 	{
-		sa(&(data->stacka));
-		rra(&(data->stacka));
+		sa(&(data->stacka), data);
+		rra(&(data->stacka), data);
 	}
 	else if (zero > first && first < second && zero > second)
-		ra(&(data->stacka));
+		ra(&(data->stacka), data);
 	else if (zero < first && first > second && zero < second)
 	{
-		sa(&(data->stacka));
-		ra(&(data->stacka));
+		sa(&(data->stacka), data);
+		ra(&(data->stacka), data);
 	}
 	else if (zero > first && first < second && zero < second)
-		sa(&(data->stacka));
+		sa(&(data->stacka), data);
 	else if (zero < first && first > second && zero > second)
-		rra(&(data->stacka));
+		rra(&(data->stacka), data);
 }
 
 void	ft_sortthird(t_data	*data)
@@ -71,9 +71,9 @@ void	ft_sortthird(t_data	*data)
 	while (data->stacka->number != min)
 	{
 		if (ft_scrolldown_worth(data->stacka, min))
-			rra(&(data->stacka));
+			rra(&(data->stacka), data);
 		else
-			ra(&(data->stacka));
+			ra(&(data->stacka), data);
 	}
 }
 
@@ -93,11 +93,11 @@ void	ft_pushmintob(t_data *data)
 	while (data->stacka->number != min)
 	{
 		if (ft_scrolldown_worth(data->stacka, min))
-			rra(&(data->stacka));
+			rra(&(data->stacka), data);
 		else
-			ra(&(data->stacka));
+			ra(&(data->stacka), data);
 	}
-	pb(&(data->stackb), &(data->stacka));
+	pb(&(data->stackb), &(data->stacka), data);
 }
 
 void	ft_sortfive(t_data *data)
@@ -108,7 +108,7 @@ void	ft_sortfive(t_data *data)
 	{
 		ft_pushmintob(data);
 		ft_sortthree(data);
-		pa(&(data->stackb), &(data->stacka));
+		pa(&(data->stackb), &(data->stacka), data);
 		return ;
 	}
 	ft_pushmintob(data);
@@ -116,15 +116,15 @@ void	ft_sortfive(t_data *data)
 	ft_sortthree(data);
 	cur = data->stackb->next;
 	if (data->stackb->number < cur->number)
-		sb(&(data->stackb));
-	pa(&(data->stackb), &(data->stacka));
-	pa(&(data->stackb), &(data->stacka));
+		sb(&(data->stackb), data);
+	pa(&(data->stackb), &(data->stacka), data);
+	pa(&(data->stackb), &(data->stacka), data);
 }
 
 void	ft_sort(t_data *data)
 {
 	if (data->nb_number == 2)
-		return (ra(&(data->stacka)));
+		return (ra(&(data->stacka), data));
 	else if (data->nb_number == 3)
 		ft_sortthree(data);
 	else if (data->nb_number >= 4 && data->nb_number <= 5)

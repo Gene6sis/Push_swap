@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:42:46 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/08 03:07:00 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:58:18 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ t_stack	*ft_lstlastbis(t_stack *lst)
 }
 
 
-void	ra(t_stack **stack)
+void	ra(t_stack **stack, t_data *data)
 {
 	t_stack *last;
 	t_stack *first;
 
-	ft_printf("ra\n");
+	ft_addmove(&(data->move), "ra");
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	if (!first || !last)
@@ -42,12 +42,12 @@ void	ra(t_stack **stack)
 	first->next = NULL;
 }
 
-void	rb(t_stack **stack)
+void	rb(t_stack **stack, t_data *data)
 {
 	t_stack *last;
 	t_stack *first;
 
-	ft_printf("rb\n");
+	ft_addmove(&(data->move), "rb");
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	if (!first || !last)
@@ -60,9 +60,9 @@ void	rb(t_stack **stack)
 	first->next = NULL;
 }
 
-void	rr(t_stack **stacka, t_stack **stackb)
+void	rr(t_stack **stacka, t_stack **stackb, t_data *data)
 {
 	// ft_printf("rr\n");
-	ra(stacka);
-	rb(stackb);
+	ra(stacka, data);
+	rb(stackb, data);
 }
