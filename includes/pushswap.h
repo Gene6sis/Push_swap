@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 16:00:16 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:40:40 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	sb(t_stack **stack, t_data *data);
 void	ft_median(t_data *data);
 void	ft_sort(t_data *data);
 void	ft_sortfirst(t_data *data);
-void	ft_sortsecond(t_data *data);
+void	ft_sortsecond(t_data *data); 
 int		ft_scrolldown_worth(t_stack	*stack, int nb);
 void	ft_sortthird(t_data	*data);
-void	ft_addmove(t_move *move, char *action);
+void	ft_addmove(t_move **move, char *action);
 
 #endif

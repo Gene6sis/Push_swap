@@ -6,13 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 16:01:04 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:06:43 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int ft_dupnb(char **argv)
+int	ft_dupnb(char **argv)
 {
 	size_t	i;
 	size_t	j;
@@ -66,7 +66,7 @@ int	ft_validarg(int argc, char **argv)
 		{
 			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_have_nb(argv[i]))
 			{
-				ft_printf("Invalid character\n");
+				ft_printf("Error\n");
 				return (0);
 			}
 			j++;
@@ -145,6 +145,18 @@ t_stack	*ft_create_stack(char **split, int count)
 	return (first);
 }
 
+t_move	*init_move(void)
+{
+	t_move	*first;
+
+	first = (t_move *)malloc(sizeof(t_move));
+	if (!first)
+		exit(1);
+	first->next = NULL;
+	first->action = " ";
+	return (first);
+}
+
 int	ft_initstack(t_data	*data)
 {
 	char	**split;
@@ -159,9 +171,7 @@ int	ft_initstack(t_data	*data)
 	while (split[data->nb_number])
 		data->nb_number++;
 	data->stacka = ft_create_stack(split, data->nb_number);
-	data->move = (t_move *)malloc(sizeof(t_move));
-	if (!data->move)
-		exit(1);
+	data->move = init_move();
 	data->argv = split;
 	ft_median(data);
 	i = -1;
@@ -185,14 +195,14 @@ int	ft_parsing(t_data *data, char **argv, int argc)
 
 void	ft_printstacks(t_stack	*stack)
 {
-	t_stack *cur;
+	t_stack	*cur;
 
 	cur = stack;
 	while (cur)
 	{
 		if (cur == stack)
 			ft_printf("%d	<---o\n", cur->number);
-		else 
+		else
 			ft_printf("%d\n", cur->number);
 		cur = cur->next;
 	}
@@ -205,54 +215,101 @@ void	ft_free(t_data *data)
 	t_move	*current;
 	t_move	*nextent;
 
-	cur = data->stacka;		
+	cur = data->stacka;
 	while (cur)
 	{
 		next = cur->next;
 		free(cur);
-		cur = next;		
+		cur = next;
 	}
 	free(cur);
-	current = data->move;		
+	current = data->move;
 	while (current)
 	{
 		nextent = current->next;
 		free(current);
-		current = nextent;		
+		current = nextent;
 	}
 	free(current);
 }
 
-int ft_issort(t_stack *stack)
+int	ft_issort(t_stack *stack)
 {
 	t_stack	*cur;
 	t_stack	*next;
 
-	cur = stack;		
+	cur = stack;
 	while (cur)
 	{
 		next = cur->next;
 		if (next && cur->number > next->number)
 			return (0);
-		cur = next;		
+		cur = next;
 	}
 	return (1);
 }
 
-
-void	ft_addmove(t_move *move, char *action)
+void	ft_addmove(t_move **move, char *action)
 {
-	
+	t_move	*cur;
+
+	cur = *move;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = (t_move *)malloc(sizeof(t_move));
+	if (!cur->next)
+		exit(1);
+	cur = cur->next;
+	cur->action = action;
+	cur->next = NULL;
+}
+
+char    *ft_str(char *str, char *to_find)
+{
+	int	i;
+	int	j;
+
+	if (to_find[0] == '\0')
+		return (str);
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i + j] == to_find[j])
+		{
+			if (!to_find[j + 1] && ft_strlen(to_find) == ft_strlen(str))
+				return (&str[i]);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 void	ft_printres(t_move	*stack)
 {
 	t_move	*cur;
-	
+	t_move	*next;
+
 	cur = stack;
 	while (cur)
 	{
-		ft_printf("%s\n", cur->action);
+		next = cur->next;
+		if (next && ((ft_str(cur->action, "rra") && ft_str(next->action, "rrb"))
+				|| (ft_str(cur->action, "rrb") && ft_str(next->action, "rra"))))
+		{
+			cur = cur->next;
+			ft_printf("rrr\n");
+		}
+		else if (next && ((ft_str(cur->action, "ra")
+					&& ft_str(next->action, "rb"))
+				|| (ft_str(cur->action, "rb") && ft_str(next->action, "ra"))))
+		{
+			cur = cur->next;
+			ft_printf("rr\n");
+		}
+		else if (!ft_strstr(cur->action, " "))
+			ft_printf("%s\n", cur->action);
 		cur = cur->next;
 	}
 }
