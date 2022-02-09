@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/08 22:42:14 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/09 21:26:27 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCS			=	$(SRCS_DIR)main.c			\
 					$(SRCS_DIR)median.c			\
 					$(SRCS_DIR)sort.c			\
 					$(SRCS_DIR)sortfirst.c		\
-					$(SRCS_DIR)sortsecond.c
+					$(SRCS_DIR)sortsecond.c		\
+					$(SRCS_DIR)sortthird.c		\
+					$(SRCS_DIR)sortlittle.c
 
 OBJS			= 	${SRCS:.c=.o}
 
@@ -27,7 +29,7 @@ EXEC			= 	push_swap
 
 CC				=	gcc
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror #-g3 -fsanitize=address
 
 PRINTF_DIR		=	ft_printf
 PRINTF_LIB 		=	$(PRINTF_DIR)/libftprintf.a

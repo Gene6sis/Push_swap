@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:06:43 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:59:24 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_validarg(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_have_nb(argv[i]))
+			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_have_nb(argv[i]) || ft_strlen(argv[i]) == 0)
 			{
 				ft_printf("Error\n");
 				return (0);
@@ -264,7 +264,7 @@ void	ft_addmove(t_move **move, char *action)
 	cur->next = NULL;
 }
 
-char    *ft_str(char *str, char *to_find)
+char	*ft_str(char *str, char *to_find)
 {
 	int	i;
 	int	j;
@@ -308,7 +308,7 @@ void	ft_printres(t_move	*stack)
 			cur = cur->next;
 			ft_printf("rr\n");
 		}
-		else if (!ft_strstr(cur->action, " "))
+		else if (!ft_str(cur->action, " "))
 			ft_printf("%s\n", cur->action);
 		cur = cur->next;
 	}

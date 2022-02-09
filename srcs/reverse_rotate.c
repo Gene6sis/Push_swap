@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:43:27 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 15:58:26 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:08:14 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_lstsizebis(t_stack *lst)
 	return (i);
 }
 
-
 void	rra(t_stack **stack, t_data *data)
 {
 	t_stack	*last;
@@ -33,11 +32,6 @@ void	rra(t_stack **stack, t_data *data)
 	int		i;
 
 	ft_addmove(&(data->move), "rra");
-	if (!*stack)
-	{
-		ft_printf("rra on NULL\n");
-		return ;
-	}
 	cur = *stack;
 	i = -1;
 	while (++i < ft_lstsizebis(*stack) - 2)
@@ -55,11 +49,6 @@ void	rrb(t_stack **stack, t_data *data)
 	int		i;
 
 	ft_addmove(&(data->move), "rrb");
-	if (!*stack)
-	{
-		ft_printf("rrb on NULL\n");
-		return ;
-	}
 	cur = *stack;
 	i = -1;
 	while (++i < ft_lstsizebis(*stack) - 2)
@@ -72,7 +61,6 @@ void	rrb(t_stack **stack, t_data *data)
 
 void	rrr(t_stack **stacka, t_stack **stackb, t_data *data)
 {
-	// ft_printf("rrr\n");
 	rra(stacka, data);
 	rrb(stackb, data);
 }

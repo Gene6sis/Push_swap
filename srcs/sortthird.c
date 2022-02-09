@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sortthird.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 00:41:43 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:07:54 by adben-mc         ###   ########.fr       */
+/*   Created: 2022/02/09 21:22:02 by adben-mc          #+#    #+#             */
+/*   Updated: 2022/02/09 21:22:59 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	pa(t_stack **stackb, t_stack **stacka, t_data *data)
+void	ft_sortthird(t_data	*data)
 {
 	t_stack	*cur;
+	int		min;
 
-	ft_addmove(&(data->move), "pa");
-	cur = *stackb;
-	*stackb = cur->next;
-	cur->next = *stacka;
-	*stacka = cur;
-}
-
-void	pb(t_stack **stackb, t_stack **stacka, t_data *data)
-{
-	t_stack	*cur;
-
-	ft_addmove(&(data->move), "pb");
-	cur = *stacka;
-	*stacka = cur->next;
-	cur->next = *stackb;
-	*stackb = cur;
+	cur = data->stacka;
+	min = cur->number;
+	while (cur)
+	{
+		if (min > cur->number)
+			min = cur->number;
+		cur = cur->next;
+	}
+	cur = data->stacka;
+	while (data->stacka->number != min)
+	{
+		if (ft_scrolldown_worth(data->stacka, min))
+			rra(&(data->stacka), data);
+		else
+			ra(&(data->stacka), data);
+	}
 }

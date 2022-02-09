@@ -6,15 +6,15 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:10:18 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 15:51:23 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:44:42 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-static int ft_movetopnb(t_stack	*stack, int nb)
+static int	ft_movetopnb(t_stack	*stack, int nb)
 {
-	t_stack *cur;
+	t_stack	*cur;
 	int		i;
 
 	i = 0;
@@ -34,7 +34,7 @@ static int ft_movetopnb(t_stack	*stack, int nb)
 	return (0);
 }
 
-static int ft_linkminmaja(t_data *data, int valueb)
+static int	ft_link(t_data *data, int valueb)
 {
 	t_stack	*cur;
 	int		minmaj;
@@ -56,28 +56,6 @@ static int ft_linkminmaja(t_data *data, int valueb)
 	return (minmaj);
 }
 
-int ft_scrolldown_worth(t_stack	*stack, int nb)
-{
-	t_stack *cur;
-	int		i;
-
-	i = 0;
-	cur = stack;
-	while (cur)
-	{
-		if (nb == cur->number)
-		{
-			if ((ft_lstsizebis(stack) / 2 + 1) > i)
-				return (0);
-			else
-				return (1);
-		}
-		i++;
-		cur = cur->next;
-	}
-	return (0);
-}
-
 static void	ft_movecheapest(t_data	*data, int a, int b)
 {
 	while (data->stackb->number != b || data->stacka->number != a)
@@ -94,7 +72,13 @@ static void	ft_movecheapest(t_data	*data, int a, int b)
 	pa(&(data->stackb), &(data->stacka), data);
 }
 
-void ft_sortsecond(t_data *data)
+static int	ft_nbmove(t_data *data, t_stack *cur)
+{
+	return ((ft_movetopnb(data->stacka, ft_link(data, cur->number))
+			+ ft_movetopnb(data->stackb, cur->number)));
+}
+
+void	ft_sortsecond(t_data *data)
 {
 	t_stack	*cur;
 	int		a;
@@ -102,17 +86,14 @@ void ft_sortsecond(t_data *data)
 	int		nb_move;
 
 	cur = data->stackb;
-	nb_move = (ft_movetopnb(data->stacka, ft_linkminmaja(data, cur->number)) +
-			ft_movetopnb(data->stackb, cur->number));
+	nb_move = ft_nbmove(data, cur);
 	while (cur)
 	{
-		if ((ft_movetopnb(data->stacka, ft_linkminmaja(data, cur->number)) +
-			ft_movetopnb(data->stackb, cur->number)) <= nb_move)
+		if (ft_nbmove(data, cur) <= nb_move)
 		{
-			a = ft_linkminmaja(data, cur->number);
+			a = ft_link(data, cur->number);
 			b = cur->number;
-			nb_move = ft_movetopnb(data->stacka, ft_linkminmaja(data,
-				cur->number)) + ft_movetopnb(data->stackb, cur->number);
+			nb_move = ft_nbmove(data, cur);
 		}
 		cur = cur->next;
 		if (!cur)
@@ -121,7 +102,7 @@ void ft_sortsecond(t_data *data)
 			cur = data->stackb;
 			if (!cur)
 				break ;
-			nb_move = ft_movetopnb(data->stacka, ft_linkminmaja(data, cur->number)) + ft_movetopnb(data->stackb, cur->number);
+			nb_move = ft_nbmove(data, cur);
 		}
 	}
 }

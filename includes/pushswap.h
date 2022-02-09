@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 19:40:40 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:26:16 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ typedef struct s_data {
 
 /*	|||||||||||||| 	 ERROR || FREE	 |||||||||||	*/
 
-
+void	ft_error(t_data *data, char *error, int code);
 
 /*	||||||||||||||| 	UTILS	 |||||||||||||||	*/
 
 void	ft_printstacks(t_stack	*stack);
 t_stack	*ft_lstlastbis(t_stack *lst);
+int		ft_getnb(t_stack *stack, int pos);
 int		ft_lstsizebis(t_stack *lst);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
@@ -77,10 +78,16 @@ void	sb(t_stack **stack, t_data *data);
 
 void	ft_median(t_data *data);
 void	ft_sort(t_data *data);
+
 void	ft_sortfirst(t_data *data);
-void	ft_sortsecond(t_data *data); 
-int		ft_scrolldown_worth(t_stack	*stack, int nb);
+void	ft_sortsecond(t_data *data);
 void	ft_sortthird(t_data	*data);
+
+void	ft_sortthree(t_data	*data);
+void	ft_sortfive(t_data *data);
+void	ft_pushmintob(t_data *data);
+
 void	ft_addmove(t_move **move, char *action);
+int		ft_scrolldown_worth(t_stack	*stack, int nb);
 
 #endif
