@@ -6,17 +6,16 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:55:20 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 10:40:29 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:51:03 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "pushswap.h"
 
-char	**ft_preparestack(t_data *data)
+void	ft_preparestack(t_data *data)
 {
 	char	*str;
 	int		i;
-	char	**split;
 
 	i = 1;
 	str = ft_strdup("");
@@ -25,74 +24,66 @@ char	**ft_preparestack(t_data *data)
 		str = ft_strjoinbis(ft_strjoinbis(str, ft_strdup(" ")),
 				ft_strdup(data->argv[i++]));
 		if (!str)
-			return (NULL);
+			ft_end("Malloc error, your split failed", data, 0);
 	}
-	split = ft_split(str, ' ');
+	data->split = ft_split(str, ' ');
 	free(str);
-	return (split);
 }
 
-t_stack	*ft_create_stack(char **split, int count)
+void	ft_create_stack(t_data *data)
 {
 	int		i;
 	t_stack	*new;
-	t_stack	*first;
 
 	i = -1;
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
-		exit(1);
-	first = new;
-	while (++i < count)
+		ft_end("Stack creation failed", data, 1);
+	data->stacka = new;
+	while (++i < data->nb_number)
 	{
-		if (i < count - 1)
+		if (i < data->nb_number - 1)
 		{
 			new->next = (t_stack *)malloc(sizeof(t_stack));
 			if (!new->next)
-				exit(1);
+				ft_end("Stack creation failed", data, 2);
 		}
-		new->number = ft_atoi(split[i]);
-		if (i == (count - 1))
+		new->number = ft_atoi(data->split[i]);
+		if (i == (data->nb_number - 1))
 			new->next = NULL;
 		else
 			new = new->next;
 	}
-	return (first);
 }
 
-t_move	*init_move(void)
+void	init_move(t_data *data)
 {
-	t_move	*first;
-
-	first = (t_move *)malloc(sizeof(t_move));
-	if (!first)
-		exit(1);
-	first->next = NULL;
-	first->action = " ";
-	return (first);
+	data->move = (t_move *)malloc(sizeof(t_move));
+	if (!data->move)
+		ft_end("Move ceation failed", data, 2);
+	data->move->next = NULL;
+	data->move->action = " ";
 }
 
 int	ft_initstack(t_data	*data)
 {
-	char	**split;
 	int		i;
 
-	split = ft_preparestack(data);
-	if (!split)
-		return (0);
-	if (!ft_validarg(data->argc, split) || ft_dupnb(split))
-		return (0);
+	ft_preparestack(data);
+	if (!data->split)
+		ft_end("Malloc error, your split failed", data, 1);
+	if (!ft_validarg(data->argc, data->split) || ft_dupnb(data->split))
+		ft_end("Invalid argument", data, 1);
 	data->nb_number = 0;
-	while (split[data->nb_number])
+	while (data->split[data->nb_number])
 		data->nb_number++;
-	data->stacka = ft_create_stack(split, data->nb_number);
-	data->move = init_move();
-	data->argv = split;
+	ft_create_stack(data);
+	init_move(data);
 	ft_median(data);
 	i = -1;
-	while (split[++i])
-		free(split[i]);
-	free(split);
+	while (data->split[++i])
+		free(data->split[i]);
+	free(data->split);
 	data->stackb = NULL;
 	return (1);
 }
@@ -101,7 +92,7 @@ int	ft_parsing(t_data *data, char **argv, int argc)
 {
 	data->argv = argv;
 	data->argc = argc;
-	if (!ft_validarg(data->argc, data->argv))
+	if (!ft_precheck(data->argc, data->argv))
 		return (0);
 	if (!ft_initstack(data))
 		return (0);

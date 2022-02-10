@@ -6,36 +6,11 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 10:39:31 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:47:02 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
-
-void	ft_free(t_data *data)
-{
-	t_stack	*cur;
-	t_stack	*next;
-	t_move	*current;
-	t_move	*nextent;
-
-	cur = data->stacka;
-	while (cur)
-	{
-		next = cur->next;
-		free(cur);
-		cur = next;
-	}
-	free(cur);
-	current = data->move;
-	while (current)
-	{
-		nextent = current->next;
-		free(current);
-		current = nextent;
-	}
-	free(current);
-}
+#include "pushswap.h"
 
 int	ft_issort(t_stack *stack)
 {
@@ -53,7 +28,7 @@ int	ft_issort(t_stack *stack)
 	return (1);
 }
 
-void	ft_addmove(t_move **move, char *action)
+void	ft_addmove(t_move **move, char *action, t_data *data)
 {
 	t_move	*cur;
 
@@ -62,7 +37,7 @@ void	ft_addmove(t_move **move, char *action)
 		cur = cur->next;
 	cur->next = (t_move *)malloc(sizeof(t_move));
 	if (!cur->next)
-		exit(1);
+		ft_end("Move creation failed", data, 3);
 	cur = cur->next;
 	cur->action = action;
 	cur->next = NULL;
@@ -96,6 +71,8 @@ void	ft_printres(t_move	*stack)
 	}
 }
 
+void	ft_printstacks(t_stack	*stack);
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -105,7 +82,7 @@ int	main(int argc, char **argv)
 	if (!ft_issort(data.stacka))
 		ft_sort(&data);
 	ft_printres(data.move);
-	ft_free(&data);
+	ft_end(NULL, &data, 10);
 }
 
 /*

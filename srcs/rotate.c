@@ -6,11 +6,11 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:42:46 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:08:40 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:44:02 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "pushswap.h"
 
 t_stack	*ft_lstlastbis(t_stack *lst)
 {
@@ -28,7 +28,7 @@ void	ra(t_stack **stack, t_data *data)
 	t_stack	*last;
 	t_stack	*first;
 
-	ft_addmove(&(data->move), "ra");
+	ft_addmove(&(data->move), "ra", data);
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	last->next = first;
@@ -41,7 +41,7 @@ void	rb(t_stack **stack, t_data *data)
 	t_stack	*last;
 	t_stack	*first;
 
-	ft_addmove(&(data->move), "rb");
+	ft_addmove(&(data->move), "rb", data);
 	first = *stack;
 	last = ft_lstlastbis(*stack);
 	last->next = first;

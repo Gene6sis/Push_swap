@@ -6,11 +6,11 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:57:12 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 12:00:13 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:42:01 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "pushswap.h"
 
 int	ft_validarg(int argc, char **argv)
 {
@@ -18,22 +18,16 @@ int	ft_validarg(int argc, char **argv)
 	int	j;
 
 	if (argc < 2)
-	{
-		ft_printf("At least 2 arguments are needed\n");
 		return (0);
-	}
 	i = 1;
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_have_nb(argv[i])
-				|| ft_strlen(argv[i]) == 0)
-			{
-				ft_printf("Error\n");
+			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_strlen(argv[i])
+				|| !ft_have_nb(argv[i]))
 				return (0);
-			}
 			j++;
 		}
 		i++;
@@ -98,7 +92,7 @@ int	ft_dupnb(char **argv)
 		while (argv[j])
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (ft_printf("Invalid arguments : Duplicate numbers\n"));
+				return (ft_printf("Error\n"));
 			j++;
 		}
 		i++;

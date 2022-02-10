@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/10 11:58:10 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/10 14:47:13 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS			=	$(SRCS_DIR)main.c			\
 					$(SRCS_DIR)sortlittle.c		\
 					$(SRCS_DIR)utils.c			\
 					$(SRCS_DIR)parsing.c		\
-					$(SRCS_DIR)ft_check.c
+					$(SRCS_DIR)ft_check.c		\
+					$(SRCS_DIR)ft_error.c
 
 OBJS			= 	${SRCS:.c=.o}
 

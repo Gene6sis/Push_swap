@@ -6,11 +6,11 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:24:19 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:27:02 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:16:00 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "pushswap.h"
 
 int	ft_getnb(t_stack *stack, int pos)
 {
