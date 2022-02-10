@@ -6,11 +6,11 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 22:48:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:24:31 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:58:21 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "pushswap.h"
 
 void	ft_sort(t_data *data)
 {

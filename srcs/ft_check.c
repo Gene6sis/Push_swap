@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:57:12 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 10:40:45 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:00:13 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,11 @@ int	ft_have_nb(char *str)
 	while (str[i])
 	{
 		if (ft_strchr("0123456789", str[i]))
-			number = 1;
+			number++;
 		i++;
 	}
+	if (number > 11)
+		return (0);
 	return (number);
 }
 
