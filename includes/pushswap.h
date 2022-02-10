@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/09 21:26:16 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/10 09:59:01 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ void	ft_error(t_data *data, char *error, int code);
 
 /*	||||||||||||||| 	UTILS	 |||||||||||||||	*/
 
+char	*ft_strjoinbis(char *s1, char *s2);
 void	ft_printstacks(t_stack	*stack);
 t_stack	*ft_lstlastbis(t_stack *lst);
 int		ft_getnb(t_stack *stack, int pos);
 int		ft_lstsizebis(t_stack *lst);
+char	*ft_str(char *str, char *to_find);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
 
