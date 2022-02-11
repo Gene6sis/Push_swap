@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 22:48:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/11 04:24:22 by adben-mc         ###   ########.fr       */
+/*   Created: 2022/02/11 03:23:18 by adben-mc          #+#    #+#             */
+/*   Updated: 2022/02/11 05:05:34 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-
-void	ft_sort(t_data *data)
+int	ft_strcmp(char *s1, char *s2)
 {
-	if (data->nb_number == 2)
-		return (ra(&(data->stacka), data));
-	else if (data->nb_number == 3)
-		ft_sortthree(data);
-	else if (data->nb_number >= 4 && data->nb_number <= 5)
-		ft_sortfive(data);
-	else if (data->nb_number > 5)
-	{
-		ft_sortfirst(data);
-		ft_sortsecond(data);
-		ft_sortthird(data);
-	}
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

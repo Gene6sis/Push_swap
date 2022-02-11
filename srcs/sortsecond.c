@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:10:18 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 14:16:00 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/11 05:05:12 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	ft_link(t_data *data, int valueb)
 	int		minmaj;
 
 	cur = data->stacka;
+	minmaj = cur->number;
 	while (cur)
 	{
 		if (cur->number > valueb)

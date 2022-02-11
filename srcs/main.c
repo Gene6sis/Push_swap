@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 15:47:02 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/11 05:06:36 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_addmove(t_move **move, char *action, t_data *data)
 	if (!cur->next)
 		ft_end("Move creation failed", data, 3);
 	cur = cur->next;
-	cur->action = action;
+	cur->action = ft_movetonb(action);
 	cur->next = NULL;
 }
 
@@ -52,26 +52,23 @@ void	ft_printres(t_move	*stack)
 	while (cur)
 	{
 		next = cur->next;
-		if (next && ((ft_str(cur->action, "rra") && ft_str(next->action, "rrb"))
-				|| (ft_str(cur->action, "rrb") && ft_str(next->action, "rra"))))
+		if (next && ((cur->action == 5 && next->action == 6)
+				|| (cur->action == 6 && next->action == 5)))
 		{
 			cur = cur->next;
 			ft_printf("rrr\n");
 		}
-		else if (next && ((ft_str(cur->action, "ra")
-					&& ft_str(next->action, "rb"))
-				|| (ft_str(cur->action, "rb") && ft_str(next->action, "ra"))))
+		else if (next && ((cur->action == 3 && next->action == 4)
+				|| (cur->action == 4 && next->action == 3)))
 		{
 			cur = cur->next;
 			ft_printf("rr\n");
 		}
-		else if (!ft_str(cur->action, " "))
-			ft_printf("%s\n", cur->action);
+		else if (cur->action != 0)
+			ft_printf("%s\n", ft_nbtomove(cur->action));
 		cur = cur->next;
 	}
 }
-
-void	ft_printstacks(t_stack	*stack);
 
 int	main(int argc, char **argv)
 {
@@ -85,19 +82,19 @@ int	main(int argc, char **argv)
 	ft_end(NULL, &data, 10);
 }
 
-/*
-// void	ft_printstacks(t_stack	*stack)
-// {
-// 	t_stack	*cur;
+void	ft_printstacks(t_stack	*stack)
+{
+	t_stack	*cur;
 
-// 	cur = stack;
-// 	while (cur)
-// 	{
-// 		if (cur == stack)
-// 			ft_printf("%d	<---o\n", cur->number);
-// 		else
-// 			ft_printf("%d\n", cur->number);
-// 		cur = cur->next;
-// 	}
-// }
+	cur = stack;
+	while (cur)
+	{
+		if (cur == stack)
+			ft_printf("%d	<---o\n", cur->number);
+		else
+			ft_printf("%d\n", cur->number);
+		cur = cur->next;
+	}
+}
+/*
 */

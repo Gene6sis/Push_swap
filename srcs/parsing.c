@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:55:20 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 15:51:03 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/11 03:26:52 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_move(t_data *data)
 	if (!data->move)
 		ft_end("Move ceation failed", data, 2);
 	data->move->next = NULL;
-	data->move->action = " ";
+	data->move->action = 0;
 }
 
 int	ft_initstack(t_data	*data)
