@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:14:42 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/12 19:19:19 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/12 23:52:49 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,26 @@ void	ft_error(t_data *data, int error)
 			free(data->move[i++]);
 		free(data->move);
 	}
+	if (error >= 4)
+		ft_freestack(data->stackb);
 }
 
 int	ft_end(char *message, t_data *data, int error)
 {
 	ft_error(data, error);
-	if (message)
+	if (message && (error >= 0 && error <= 3))
 	{
 		ft_printf("Error : %s\n", message);
 		exit(EXIT_FAILURE);
 	}
-	else
-		exit(EXIT_SUCCESS);
+	if (message)
+	{
+		if (error < 0)
+			ft_printf("Error\n");
+		else
+			ft_printf("KO\n");
+		exit(EXIT_FAILURE);
+	}
+	ft_printf("OK\n");
+	exit(EXIT_SUCCESS);
 }

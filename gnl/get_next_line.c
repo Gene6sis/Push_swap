@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:14:26 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/12 19:14:12 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:30:52 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ char	*find_line(char *save)
 		str[i] = save[i];
 		i++;
 	}
-	// if (save[i] == '\n')
-	// {
-	// 	str[i] = save[i];
-	// 	i++;
-	// }
 	str[i] = '\0';
 	return (str);
 }

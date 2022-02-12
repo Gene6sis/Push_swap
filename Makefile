@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/12 19:37:45 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/13 00:39:14 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRCS_BONUS		=	$(BONUS_DIR)main.c			\
 					$(BONUS_DIR)move_ps.c		\
 					$(BONUS_DIR)move_rr.c		\
 					$(BONUS_DIR)move_rrr.c		\
-					$(BONUS_DIR)utils.c
+					$(BONUS_DIR)utils.c			\
+					$(BONUS_DIR)parsing.c
 
 OBJS			= 	${SRCS:.c=.o}
 OBJS_BONUS		= 	${SRCS_BONUS:.c=.o}

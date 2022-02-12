@@ -6,133 +6,71 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 15:22:28 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/12 19:42:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:35:51 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap_bonus.h"
 
-void	ft_checkarg(t_data *data)
+void	ft_move(t_data *data, size_t i)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 1;
-	data->nb_number = 0;
-	while (data->argv[i])
-	{
-		j = 0;
-		while (data->argv[i][j])
-		{
-			if (!ft_strchr("-+0123456789", (char)data->argv[i][j]))
-				ft_end("Invalid argument", data, 0);		
-			j++;
-		}
-		i++;
-		data->nb_number++;
-	}
-}
-
-void	ft_createstack(t_data *data)
-{
-	int		i;
-	t_stack	*new;
-
-	i = -1;
-	new = (t_stack *)malloc(sizeof(t_stack));
-	if (!new)
-		ft_end("Stack creation failed", data, 0);
-	data->stacka = new;
-	while (++i < data->nb_number)
-	{
-		if (i < data->nb_number - 1)
-		{
-			new->next = (t_stack *)malloc(sizeof(t_stack));
-			if (!new->next)
-				ft_end("Stack creation failed", data, 1);
-		}
-		new->number = ft_atoi(data->argv[i + 1]);
-		if (i == (data->nb_number - 1))
-			new->next = NULL;
-		else
-			new = new->next;
-	}
-}
-
-static int	ft_addstock(char *str, t_data *data)
-{
-	char	**newmap;
-	size_t	i;
-
-	i = 0;
-	newmap = malloc(sizeof(char *) * (data->nb_move + 1));
-	if (!newmap)
-		ft_end("Newmap creation failed", data, 3);
 	while (data->move[i])
 	{
-		newmap[i] = data->move[i];
-		i++;
+		if (!ft_strcmp(data->move[i], "sa"))
+			sa(&(data->stacka), data);
+		if (!ft_strcmp(data->move[i], "sb"))
+			sb(&(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "ss"))
+			ss(&(data->stacka), &(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "ra"))
+			ra(&(data->stacka), data);
+		if (!ft_strcmp(data->move[i], "rb"))
+			rb(&(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "rr"))
+			rr(&(data->stacka), &(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "rra"))
+			rra(&(data->stacka), data);
+		if (!ft_strcmp(data->move[i], "rrb"))
+			rrb(&(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "rrr"))
+			rrr(&(data->stacka), &(data->stackb), data);
+		if (!ft_strcmp(data->move[i], "pa"))
+			pa(&(data->stackb), &(data->stacka), data);
+		if (!ft_strcmp(data->move[i++], "pb"))
+			pb(&(data->stackb), &(data->stacka), data);
 	}
-	newmap[i++] = str;
-	newmap[i] = NULL;
-	i = 0;
-	free(data->move);
-	data->move = newmap;
-	return (0);
 }
 
-int	ft_checkmove(t_data *data)
+void	ft_printstacks(t_stack	*stack)
 {
-	size_t	i;
+	t_stack	*cur;
 
-	i = 0;
-	while (data->move[i])
+	cur = stack;
+	while (cur)
 	{
-		if ((!ft_strcmp(data->move[i], "sa")
-			|| !ft_strcmp(data->move[i], "sb")
-			|| !ft_strcmp(data->move[i], "ss")
-			|| !ft_strcmp(data->move[i], "ra")
-			|| !ft_strcmp(data->move[i], "rb")
-			|| !ft_strcmp(data->move[i], "rr")
-			|| !ft_strcmp(data->move[i], "rrr")
-			|| !ft_strcmp(data->move[i], "rra")
-			|| !ft_strcmp(data->move[i], "rrb")
-			|| !ft_strcmp(data->move[i], "pa")
-			|| !ft_strcmp(data->move[i], "pb"))
-			&& (ft_strlen(data->move[i]) == 2
-			|| ft_strlen(data->move[i]) == 3))
-			return (1);
-		i++;
+		if (cur == stack)
+			ft_printf("%d	<---o\n", cur->number);
+		else if (cur)
+			ft_printf("%d\n", cur->number);
+		cur = cur->next;
 	}
-	return (0);
 }
 
-void	ft_standard(t_data *data)
+void	ft_sorted(t_data *data)
 {
-	char	*new_line;
-	
-	data->move = malloc(sizeof(char *));
-	if (!data->move)
-		ft_end("Map allocation failed", data, 1);
-	data->move[0] = NULL;
-	data->nb_move = 0;
-	new_line = get_next_line(0);
-	if (!new_line)
-		ft_end("No movement entered", data, 2);
-	while (new_line)
+	t_stack	*cur;
+	t_stack	*next;
+
+	if (ft_lstsizebis(data->stackb) > 0)
+		ft_end("Stack B not empty", data, 4);
+	cur = data->stacka;
+	while (cur)
 	{
-		data->nb_move++;
-		ft_addstock(new_line, data);
-		new_line = get_next_line(0);
+		next = cur->next;
+		if (next && cur->number > next->number)
+			ft_end("Stack A isn't sorted", data, 4);
+		cur = next;
 	}
-	close(0);
-	if (!ft_checkmove(data))
-		ft_end("Unknow move", data, 3);
-}
-
-void	ft_move(t_data *data)
-{
-		
 }
 
 int	main(int argc, char **argv)
@@ -144,12 +82,8 @@ int	main(int argc, char **argv)
 	ft_checkarg(&data);
 	ft_createstack(&data);
 	ft_standard(&data);
-	for(int i = 0; data.move[i]; i++)
-	{
-		ft_printf("Ligne [%d] : %s\n", i, data.move[i]);
-	}
-	ft_end(NULL, &data, 3);
-	ft_move(&data);
-	// ft_sorted(&data);
+	ft_move(&data, 0);
+	ft_sorted(&data);
+	ft_end(NULL, &data, 4);
 	return (0);
 }

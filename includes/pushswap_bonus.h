@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:04:55 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/12 19:39:33 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:37:09 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_end(char *message, t_data *data, int error);
 
 t_stack	*ft_lstlastbis(t_stack *lst);
 int		ft_lstsizebis(t_stack *lst);
+int		ft_atolcheck(char *str, long max, long min);
 
 /*	||||||||||||||| 	PARSE	 |||||||||||||||	*/
 
@@ -55,20 +56,24 @@ int		ft_parsing(t_data *data, char **argv, int argc);
 
 /*	||||||||||||||| 	MOVES	 |||||||||||||||	*/
 
-void	pa(t_stack **stackb, t_stack **stacka);
-void	pb(t_stack **stackb, t_stack **stacka);
-void	rra(t_stack **stack);
-void	rrb(t_stack **stack);
-void	rrr(t_stack **stacka, t_stack **stackb);
-void	ra(t_stack **stack);
-void	rb(t_stack **stack);
-void	rr(t_stack **stacka, t_stack **stackb);
-void	ss(t_stack **stacka, t_stack **stackb);
-void	sa(t_stack **stack);
-void	sb(t_stack **stack);
+void	sa(t_stack **stack, t_data *data);
+void	sb(t_stack **stack, t_data *data);
+void	ss(t_stack **stacka, t_stack **stackb, t_data *data);
+void	ra(t_stack **stack, t_data *data);
+void	rb(t_stack **stack, t_data *data);
+void	rr(t_stack **stacka, t_stack **stackb, t_data *data);
+void	rra(t_stack **stack, t_data *data);
+void	rrb(t_stack **stack, t_data *data);
+void	rrr(t_stack **stacka, t_stack **stackb, t_data *data);
+void	pa(t_stack **stackb, t_stack **stacka, t_data *data);
+void	pb(t_stack **stackb, t_stack **stacka, t_data *data);
 
 /*	||||||||||||||| 	CHECKER	 |||||||||||||||	*/
 
-
+void	ft_checkarg(t_data *data);
+void	ft_createstack(t_data *data);
+int		ft_addstock(char *str, t_data *data);
+int		ft_checkmove(t_data *data);
+void	ft_standard(t_data *data);
 
 #endif
