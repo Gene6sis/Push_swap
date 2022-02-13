@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:57:12 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 14:42:01 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:17:55 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_validarg(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		j = 0;
@@ -92,7 +92,7 @@ int	ft_dupnb(char **argv)
 		while (argv[j])
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (ft_printf("Error\n"));
+				return (1);
 			j++;
 		}
 		i++;

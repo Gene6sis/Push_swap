@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 15:22:28 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/13 00:35:51 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:06:10 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	if (argc < 2)
+		return (0);
 	data.argc = argc;
 	data.argv = argv;
 	ft_checkarg(&data);

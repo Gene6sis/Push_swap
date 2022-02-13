@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 00:35:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/13 00:36:46 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:36:57 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	ft_checkarg(t_data *data)
 {
 	size_t	i;
 	size_t	j;
-	size_t	x;
 
-	i = 1;
+	i = 0;
 	data->nb_number = 0;
-	while (data->argv[i])
+	while (data->argv[++i])
 	{
 		j = 0;
 		while (data->argv[i][j])
@@ -30,12 +29,13 @@ void	ft_checkarg(t_data *data)
 		}
 		if (ft_strlen(data->argv[i]) < 1 || ft_strlen(data->argv[i]) > 11)
 			ft_end("Invalid argument", data, -1);
-		x = i;
-		while (data->argv[++x])
-			if ((ft_atoi(data->argv[x]) == ft_atoi(data->argv[i]))
-				|| !ft_atolcheck(data->argv[x], 2147483647, -2147483648))
+		j = i + 1;
+		if (!ft_atolcheck(data->argv[i], 2147483647, -2147483648))
+			ft_end("Invalid argument", data, -1);
+		while (data->argv[j])
+			if ((ft_atoi(data->argv[i]) == ft_atoi(data->argv[j]))
+				|| !ft_atolcheck(data->argv[j++], 2147483647, -2147483648))
 				ft_end("Invalid argument", data, -1);
-		i++;
 		data->nb_number++;
 	}
 }
@@ -96,7 +96,7 @@ int	ft_checkmove(t_data *data)
 	i = 0;
 	while (data->move[i])
 	{
-		if ((!ft_strcmp(data->move[i], "sa")
+		if (!((!ft_strcmp(data->move[i], "sa")
 				|| !ft_strcmp(data->move[i], "sb")
 				|| !ft_strcmp(data->move[i], "ss")
 				|| !ft_strcmp(data->move[i], "ra")
@@ -108,11 +108,11 @@ int	ft_checkmove(t_data *data)
 				|| !ft_strcmp(data->move[i], "pa")
 				|| !ft_strcmp(data->move[i], "pb"))
 			&& (ft_strlen(data->move[i]) == 2
-				|| ft_strlen(data->move[i]) == 3))
-			return (1);
+				|| ft_strlen(data->move[i]) == 3)))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 void	ft_standard(t_data *data)
@@ -126,7 +126,7 @@ void	ft_standard(t_data *data)
 	data->nb_move = 0;
 	new_line = get_next_line(0);
 	if (!new_line)
-		ft_end("No movement entered", data, 2);
+		return ;
 	while (new_line)
 	{
 		data->nb_move++;

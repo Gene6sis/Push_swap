@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:51:44 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/12 23:31:14 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:14:25 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	rra(t_stack **stack, t_data *data)
 	t_stack	*cur;
 	int		i;
 
+	if (ft_lstsizebis(*stack) < 2)
+		return ;
 	if (!*stack)
 		ft_end("Impossible move", data, 4);
 	cur = *stack;
@@ -36,6 +38,8 @@ void	rrb(t_stack **stack, t_data *data)
 	t_stack	*cur;
 	int		i;
 
+	if (ft_lstsizebis(*stack) < 2)
+		return ;
 	if (!*stack)
 		ft_end("Impossible move", data, 4);
 	cur = *stack;

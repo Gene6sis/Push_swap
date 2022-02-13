@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:14:42 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/10 15:56:58 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:01:10 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_end(char *message, t_data *data, int error)
 	ft_error(data, error);
 	if (message)
 	{
-		ft_printf("Error : %s\n", message);
+		ft_printf("Error\n", message);
 		exit(EXIT_FAILURE);
 	}
 	else

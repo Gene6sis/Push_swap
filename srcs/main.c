@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:52:34 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/11 05:06:36 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/13 14:58:30 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	if (argc < 2)
+		return (0);
 	if (!ft_parsing(&data, argv, argc))
 		return (1);
 	if (!ft_issort(data.stacka))
@@ -81,20 +83,3 @@ int	main(int argc, char **argv)
 	ft_printres(data.move);
 	ft_end(NULL, &data, 10);
 }
-
-void	ft_printstacks(t_stack	*stack)
-{
-	t_stack	*cur;
-
-	cur = stack;
-	while (cur)
-	{
-		if (cur == stack)
-			ft_printf("%d	<---o\n", cur->number);
-		else
-			ft_printf("%d\n", cur->number);
-		cur = cur->next;
-	}
-}
-/*
-*/
