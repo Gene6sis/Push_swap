@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:57:12 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/13 16:17:55 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/17 01:21:51 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int	ft_validarg(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	if (!argv[0])
+		return (0);
 	i = 0;
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_strchr("-+0123456789 ", argv[i][j]) || !ft_strlen(argv[i])
-				|| !ft_have_nb(argv[i]))
+			if (!ft_strchr("-+0123456789 ", argv[i][j])
+				|| !ft_strlen(argv[i]) || !ft_have_nb(argv[i]))
 				return (0);
 			j++;
 		}

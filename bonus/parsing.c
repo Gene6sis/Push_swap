@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 00:35:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/02/13 16:36:57 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:50:53 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,18 @@ int	ft_checkmove(t_data *data)
 	while (data->move[i])
 	{
 		if (!((!ft_strcmp(data->move[i], "sa")
-				|| !ft_strcmp(data->move[i], "sb")
-				|| !ft_strcmp(data->move[i], "ss")
-				|| !ft_strcmp(data->move[i], "ra")
-				|| !ft_strcmp(data->move[i], "rb")
-				|| !ft_strcmp(data->move[i], "rr")
-				|| !ft_strcmp(data->move[i], "rrr")
-				|| !ft_strcmp(data->move[i], "rra")
-				|| !ft_strcmp(data->move[i], "rrb")
-				|| !ft_strcmp(data->move[i], "pa")
-				|| !ft_strcmp(data->move[i], "pb"))
-			&& (ft_strlen(data->move[i]) == 2
-				|| ft_strlen(data->move[i]) == 3)))
+					|| !ft_strcmp(data->move[i], "sb")
+					|| !ft_strcmp(data->move[i], "ss")
+					|| !ft_strcmp(data->move[i], "ra")
+					|| !ft_strcmp(data->move[i], "rb")
+					|| !ft_strcmp(data->move[i], "rr")
+					|| !ft_strcmp(data->move[i], "rrr")
+					|| !ft_strcmp(data->move[i], "rra")
+					|| !ft_strcmp(data->move[i], "rrb")
+					|| !ft_strcmp(data->move[i], "pa")
+					|| !ft_strcmp(data->move[i], "pb"))
+				&& (ft_strlen(data->move[i]) == 2
+					|| ft_strlen(data->move[i]) == 3)))
 			return (0);
 		i++;
 	}

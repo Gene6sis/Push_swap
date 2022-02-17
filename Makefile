@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 00:45:16 by adben-mc          #+#    #+#              #
-#    Updated: 2022/02/13 16:44:08 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/02/17 01:23:46 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,4 +80,4 @@ re:			fclean all
 
 bonus:		$(PRINTF_LIB) $(CHECKER)
 
-.PHONY:		all clean fclean re $(PRINTF_LIB)
+.PHONY:		all clean fclean re $(PRINTF_LIB) bonus
